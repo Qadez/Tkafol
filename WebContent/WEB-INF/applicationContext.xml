@@ -33,7 +33,11 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.tkafol.model.Person</beans:value>
+				<beans:value>com.tkafol.model.Area</beans:value>
+				<beans:value>com.tkafol.model.Branch</beans:value>
+				<beans:value>com.tkafol.model.Gender</beans:value>
+				<beans:value>com.tkafol.model.UserRole</beans:value>
+				<beans:value>com.tkafol.model.User</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -45,16 +49,21 @@
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="personDAO"
-		class="com.tkafol.dao.PersonDAOImpl">
+	<beans:bean id="personDAO" class="com.tkafol.dao.imple.PersonDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="userDAO" class="com.tkafol.dao.imple.UserDAOImple">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="personService"
-		class="com.tkafol.service.PersonServiceImpl">
+	
+	<beans:bean id="personService" class="com.tkafol.service.PersonServiceImpl">
 		<beans:property name="personDAO" ref="personDAO"></beans:property>
 	</beans:bean>
-	
+	<beans:bean id="loginService" class="com.tkafol.service.LoginServiceImple">
+		<beans:property name="userDAO" ref="userDAO"></beans:property>
+	</beans:bean>
+
 	<context:component-scan base-package="com.journaldev" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
