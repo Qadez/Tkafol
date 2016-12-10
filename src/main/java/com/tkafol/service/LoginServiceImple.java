@@ -6,8 +6,8 @@ import javax.faces.bean.RequestScoped;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.tkafol.dao.PersonDAO;
 import com.tkafol.dao.UserDAO;
 import com.tkafol.model.User;
 
@@ -21,13 +21,25 @@ public class LoginServiceImple {
 
 	private UserDAO userDAO;
 
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
+	@Transactional
 	public String loginAction(User user) {
 
 		User user1 = userDAO.findUserByUserNameAndPassword(user.getUserName(), user.getPassword());
-		if (user1 != null)
-			return "Enterprise/pages/index.html";
-		else
-			return "Enterprise/pages/login.xhtml?errormessage=\"UserNamePassword Wrong\"";
+		if (user1 != null) {
+			logger.info("User Is not Null " + user1.getEmail());
+			return "index";
+		} else {
+			logger.info("User Is Null ");
+			return null;
+		}
 	}
 
 	public String getUserName() {

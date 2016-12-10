@@ -19,7 +19,6 @@
 
 	<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
 	<h:outputStylesheet name="metisMenu/metisMenu.min.css" />
-	<h:outputStylesheet name="metisMenu/metisMenu.min.css" />
 	<h:outputStylesheet name="sb-admin-2.css" library="css" />
 	<h:outputStylesheet name="font-awesome/css/font-awesome.min.css" />
 
@@ -42,7 +41,7 @@
 										value="#{user.userName}" name="email" type="email" />
 								</div>
 								<div class="form-group">
-									<h:inputText class="form-control" a:placeholder="Password"
+									<h:inputSecret class="form-control" a:placeholder="Password"
 										value="#{user.password}" name="password" type="password" />
 								</div>
 								<div class="checkbox">

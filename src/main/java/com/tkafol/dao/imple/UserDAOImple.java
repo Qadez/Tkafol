@@ -24,8 +24,8 @@ public class UserDAOImple implements UserDAO {
 	@Override
 	public User findUserByUserNameAndPassword(String userName, String password) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from user where userName=:user and password=:pass");
-		query.setString("user", userName);
+		Query query = session.createQuery("from User u where u.userName=:userN and u.password=:pass");
+		query.setString("userN", userName);
 		query.setString("pass", password);
 
 		return (User) query.uniqueResult();
