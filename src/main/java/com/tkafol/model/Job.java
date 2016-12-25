@@ -3,16 +3,16 @@ package com.tkafol.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 /**
- * The persistent class for the gender database table.
+ * The persistent class for the jobs database table.
  * 
  */
 @Entity
-@NamedQuery(name="Gender.findAll", query="SELECT g FROM Gender g")
-public class Gender implements Serializable {
+@Table(name="jobs")
+@NamedQuery(name="Job.findAll", query="SELECT j FROM Job j")
+public class Job implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,11 +23,7 @@ public class Gender implements Serializable {
 	@Column(name="STORE_DATE")
 	private Timestamp storeDate;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="gender")
-	private List<User> users;
-
-	public Gender() {
+	public Job() {
 	}
 
 	public int getId() {
@@ -52,28 +48,6 @@ public class Gender implements Serializable {
 
 	public void setStoreDate(Timestamp storeDate) {
 		this.storeDate = storeDate;
-	}
-
-	public List<User> getUsers() {
-		return this.users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-
-	public User addUser(User user) {
-		getUsers().add(user);
-		user.setGender(this);
-
-		return user;
-	}
-
-	public User removeUser(User user) {
-		getUsers().remove(user);
-		user.setGender(null);
-
-		return user;
 	}
 
 }

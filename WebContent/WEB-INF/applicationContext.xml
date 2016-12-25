@@ -38,6 +38,12 @@
 				<beans:value>com.tkafol.model.Gender</beans:value>
 				<beans:value>com.tkafol.model.UserRole</beans:value>
 				<beans:value>com.tkafol.model.User</beans:value>
+				<beans:value>com.tkafol.model.Case</beans:value>
+				<beans:value>com.tkafol.model.Diseas</beans:value>
+				<beans:value>com.tkafol.model.Government</beans:value>
+				<beans:value>com.tkafol.model.Job</beans:value>
+				<beans:value>com.tkafol.model.MatrialState</beans:value>
+				<beans:value>com.tkafol.model.ResearchType</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -49,12 +55,18 @@
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="userDAO" class="com.tkafol.dao.imple.UserDAOImple">
+	<beans:bean id="userDAO" class="com.tkafol.dao.spring.UserDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="diseasDAO" class="com.tkafol.dao.spring.DiseasDAOImple">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
 	<beans:bean id="loginService" class="com.tkafol.service.LoginServiceImple">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="diseasService" class="com.tkafol.service.DiseasService">
+		<beans:property name="diseasDAO" ref="diseasDAO"></beans:property>
 	</beans:bean>
 
 	<context:component-scan base-package="com.journaldev" />

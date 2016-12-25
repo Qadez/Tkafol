@@ -35,7 +35,7 @@ public class LoginServiceImple {
 		User user1 = userDAO.findUserByUserNameAndPassword(user.getUserName(), user.getPassword());
 		if (user1 != null) {
 			logger.info("User Is not Null " + user1.getEmail());
-			return "index";
+			return "template";
 		} else {
 			logger.info("User Is Null ");
 			return null;

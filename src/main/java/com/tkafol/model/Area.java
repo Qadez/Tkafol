@@ -31,6 +31,10 @@ public class Area implements Serializable {
 	@OneToMany(mappedBy="area")
 	private List<User> users;
 
+	//bi-directional many-to-one association to Case
+	@OneToMany(mappedBy="area")
+	private List<Case> cases;
+
 	public Area() {
 	}
 
@@ -100,6 +104,28 @@ public class Area implements Serializable {
 		user.setArea(null);
 
 		return user;
+	}
+
+	public List<Case> getCases() {
+		return this.cases;
+	}
+
+	public void setCases(List<Case> cases) {
+		this.cases = cases;
+	}
+
+	public Case addCas(Case cas) {
+		getCases().add(cas);
+		cas.setArea(this);
+
+		return cas;
+	}
+
+	public Case removeCas(Case cas) {
+		getCases().remove(cas);
+		cas.setArea(null);
+
+		return cas;
 	}
 
 }

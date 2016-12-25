@@ -1,27 +1,21 @@
 package com.tkafol.model;
 
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * The persistent class for the users database table.
  * 
  */
 @Entity
-@Table(name = "users")
-@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-@ManagedBean(name = "user")
+@Table(name="users")
+@ManagedBean(name="user")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -36,40 +30,40 @@ public class User implements Serializable {
 
 	private String phone;
 
-	@Column(name = "STORE_DATE")
+	@Column(name="STORE_DATE")
 	private Timestamp storeDate;
 
-	@Column(name = "USER_NAME")
+	@Column(name="USER_NAME")
 	private String userName;
 
-	// bi-directional many-to-one association to Branch
-	@OneToMany(mappedBy = "user")
+	//bi-directional many-to-one association to Branch
+	@OneToMany(mappedBy="user")
 	private List<Branch> branches;
 
-	// bi-directional many-to-one association to Area
+	//bi-directional many-to-one association to Area
 	@ManyToOne
 	private Area area;
 
-	// bi-directional many-to-one association to Branch
+	//bi-directional many-to-one association to Branch
 	@ManyToOne
 	private Branch branch;
 
-	// bi-directional many-to-one association to Gender
+	//bi-directional many-to-one association to Gender
 	@ManyToOne
 	private Gender gender;
 
-	// bi-directional many-to-one association to UserRole
+	//bi-directional many-to-one association to UserRole
 	@ManyToOne
-	@JoinColumn(name = "ROLE_ID")
+	@JoinColumn(name="ROLE_ID")
 	private UserRole userRole;
 
-	// bi-directional many-to-one association to User
+	//bi-directional many-to-one association to User
 	@ManyToOne
-	@JoinColumn(name = "MANAGER_ID")
+	@JoinColumn(name="MANAGER_ID")
 	private User user;
 
-	// bi-directional many-to-one association to User
-	@OneToMany(mappedBy = "user")
+	//bi-directional many-to-one association to User
+	@OneToMany(mappedBy="user")
 	private List<User> users;
 
 	public User() {

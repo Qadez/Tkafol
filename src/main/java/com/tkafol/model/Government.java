@@ -7,13 +7,12 @@ import java.util.List;
 
 
 /**
- * The persistent class for the user_role database table.
+ * The persistent class for the government database table.
  * 
  */
 @Entity
-@Table(name="user_role")
-@NamedQuery(name="UserRole.findAll", query="SELECT u FROM UserRole u")
-public class UserRole implements Serializable {
+@NamedQuery(name="Government.findAll", query="SELECT g FROM Government g")
+public class Government implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,11 +23,11 @@ public class UserRole implements Serializable {
 	@Column(name="STORE_DATE")
 	private Timestamp storeDate;
 
-	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="userRole")
-	private List<User> users;
+	//bi-directional many-to-one association to Case
+	@OneToMany(mappedBy="government")
+	private List<Case> cases;
 
-	public UserRole() {
+	public Government() {
 	}
 
 	public int getId() {
@@ -55,26 +54,26 @@ public class UserRole implements Serializable {
 		this.storeDate = storeDate;
 	}
 
-	public List<User> getUsers() {
-		return this.users;
+	public List<Case> getCases() {
+		return this.cases;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setCases(List<Case> cases) {
+		this.cases = cases;
 	}
 
-	public User addUser(User user) {
-		getUsers().add(user);
-		user.setUserRole(this);
+	public Case addCas(Case cas) {
+		getCases().add(cas);
+		cas.setGovernment(this);
 
-		return user;
+		return cas;
 	}
 
-	public User removeUser(User user) {
-		getUsers().remove(user);
-		user.setUserRole(null);
+	public Case removeCas(Case cas) {
+		getCases().remove(cas);
+		cas.setGovernment(null);
 
-		return user;
+		return cas;
 	}
 
 }
