@@ -40,4 +40,18 @@ public class DiseasDAOImple implements DiseasDAO {
 		return findAll();
 	}
 
+	@Override
+	public List<Diseas> update(Diseas currentDiseas) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(currentDiseas);
+		return findAll();
+	}
+
+	@Override
+	public List<Diseas> add(Diseas currentDiseas) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(currentDiseas);
+		return findAll();
+	}
+
 }

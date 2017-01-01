@@ -22,6 +22,8 @@
 	<h:outputStylesheet name="sb-admin-2.css" library="css" />
 	<h:outputStylesheet name="font-awesome/css/font-awesome.min.css" />
 	<h:outputStylesheet name="morrisjs/morris.css" />
+
+
 </h:head>
 
 <h:body>
@@ -237,7 +239,7 @@
 								Basic Input<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
 								<li><a href="diseases.xhtml">Diseases</a></li>
-								<li><a href="morris.html">Morris.js Charts</a></li>
+								<li><a href="morris.html">Users</a></li>
 							</ul> <!-- /.nav-second-level --></li>
 						<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>
 								Tables</a></li>
@@ -285,6 +287,7 @@
 			<ui:insert name="mainContent">
 
 
+
 			</ui:insert>
 
 
@@ -300,11 +303,12 @@
 
 	<!-- Metis Menu Plugin JavaScript -->
 
-	<!-- Morris Charts JavaScript -->
-	<script src="../vendor/morrisjs/morris.min.js"></script>
-	<script src="../data/morris-data.js"></script>
+
 
 	<!-- Custom Theme JavaScript -->
+
+
+
 
 
 
@@ -316,16 +320,16 @@
 	<h:outputScript name="morrisjs/morris.min.js" />
 	<h:outputScript name="morris-data.js" library="js" />
 
+
+	<!-- Bootstrap Core JavaScript -->
+
 	<h:outputScript name="datatables/js/jquery.dataTables.min.js" />
 	<h:outputScript name="datatables-plugins/dataTables.bootstrap.min.js" />
 	<h:outputScript name="datatables-responsive/dataTables.responsive.js" />
 
-	<!-- Bootstrap Core JavaScript -->
-
-	<!-- Metis Menu Plugin JavaScript -->
-
 	<!-- Custom Theme JavaScript -->
 	<h:outputScript name="sb-admin-2.js" library="js" />
+	<h:outputScript name="functions.js" library="js" />
 
 
 
