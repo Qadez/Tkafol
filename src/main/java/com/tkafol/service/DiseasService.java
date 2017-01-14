@@ -27,13 +27,14 @@ public class DiseasService {
 	private List<Diseas> diseases;
 
 	private Diseas currentDiseas;
+	private Diseas newDiseas;
 
 	private static final Logger logger = LoggerFactory.getLogger(DiseasService.class);
 
 	@PostConstruct
 	public void init() {
-
 		currentDiseas = new Diseas();
+		newDiseas =new Diseas();
 	}
 
 	public DiseasDAO getDiseasDAO() {
@@ -70,29 +71,36 @@ public class DiseasService {
 		this.currentDiseas = currentDiseas;
 	}
 
-	public void updateCurrentDiseas(Diseas currentDiseas) {
-		logger.info("Qadez : Update The Current Id:" + currentDiseas.getId());
-		setCurrentDiseas(currentDiseas);
-	}
-
 	@Transactional
 	public void updateDisease() {
 		logger.info("Qadez : updateDisease ");
+		logger.info("Qadez : Current Name " + currentDiseas.getName());
 		diseases = diseasDAO.update(currentDiseas);
 	}
 
 	@Transactional
 	public void addNew() {
 		logger.info("Qadez : Add New  ");
-		diseases = diseasDAO.add(currentDiseas);
+		diseases = diseasDAO.add(newDiseas);
 	}
 
 	public void initCurrent() {
-		currentDiseas = new Diseas();
+		newDiseas = new Diseas();
 	}
 
+	@Transactional
 	public void updateCurrentDisease(Diseas diseas) {
 		logger.info("Qadez :  UPdate Current Disesase " + diseas.getName());
 		this.currentDiseas = diseas;
 	}
+
+	public Diseas getNewDiseas() {
+		return newDiseas;
+	}
+
+	public void setNewDiseas(Diseas newDiseas) {
+		this.newDiseas = newDiseas;
+	}
+	
+	
 }

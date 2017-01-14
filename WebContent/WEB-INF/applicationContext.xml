@@ -61,12 +61,43 @@
 	<beans:bean id="diseasDAO" class="com.tkafol.dao.spring.DiseasDAOImple">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	<beans:bean id="genderDAO" class="com.tkafol.dao.spring.GenderDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="governmentDAO" class="com.tkafol.dao.spring.GovernmentDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="jobDAO" class="com.tkafol.dao.spring.JobDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="matrialStateDAO" class="com.tkafol.dao.spring.MatrialStateDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="userRoleDAO" class="com.tkafol.dao.spring.UserRoleDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
 	
 	<beans:bean id="loginService" class="com.tkafol.service.LoginServiceImple">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
 	<beans:bean id="diseasService" class="com.tkafol.service.DiseasService">
 		<beans:property name="diseasDAO" ref="diseasDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="genderService" class="com.tkafol.service.GenderService">
+		<beans:property name="genderDAO" ref="genderDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="governmentService" class="com.tkafol.service.GovernmentService">
+		<beans:property name="governmentDAO" ref="governmentDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="jobService" class="com.tkafol.service.JobService">
+		<beans:property name="jobDAO" ref="jobDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="matrialStateService" class="com.tkafol.service.MatrialStateService">
+		<beans:property name="matrialStateDAO" ref="matrialStateDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="userRoleService" class="com.tkafol.service.UserRoleService">
+		<beans:property name="userRoleDAO" ref="userRoleDAO"></beans:property>
 	</beans:bean>
 
 	<context:component-scan base-package="com.journaldev" />

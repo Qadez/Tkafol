@@ -21,8 +21,8 @@ public class MatrialState implements Serializable {
 
 	private String name;
 
-	@Column(name="STOR_DATE")
-	private Timestamp storDate;
+	@Column(name="STORE_DATE")
+	private Timestamp storeDate;
 
 	//bi-directional many-to-one association to Case
 	@OneToMany(mappedBy="matrialState")
@@ -47,12 +47,12 @@ public class MatrialState implements Serializable {
 		this.name = name;
 	}
 
-	public Timestamp getStorDate() {
-		return this.storDate;
+	public Timestamp getStoreDate() {
+		return this.storeDate;
 	}
 
-	public void setStorDate(Timestamp storDate) {
-		this.storDate = storDate;
+	public void setStoreDate(Timestamp storeDate) {
+		this.storeDate = storeDate;
 	}
 
 	public List<Case> getCases() {
