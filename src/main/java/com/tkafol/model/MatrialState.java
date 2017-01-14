@@ -21,7 +21,7 @@ public class MatrialState implements Serializable {
 
 	private String name;
 
-	@Column(name="STORE_DATE")
+	@Column(name="STORE_DATE", insertable=false)
 	private Timestamp storeDate;
 
 	//bi-directional many-to-one association to Case

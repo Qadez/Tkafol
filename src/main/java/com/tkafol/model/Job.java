@@ -20,7 +20,7 @@ public class Job implements Serializable {
 
 	private String name;
 
-	@Column(name="STORE_DATE")
+	@Column(name="STORE_DATE", insertable=false)
 	private Timestamp storeDate;
 
 	public Job() {
