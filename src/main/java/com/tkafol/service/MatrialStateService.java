@@ -24,6 +24,8 @@ public class MatrialStateService {
 	private MatrialStateDAO matrialStateDAO;
 	private List<MatrialState> matrialStates;
 	private MatrialState currentMatrialState;
+	private MatrialState newMatrialState;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(MatrialStateService.class);
 
@@ -31,6 +33,7 @@ public class MatrialStateService {
 	public void init() {
 
 		currentMatrialState = new MatrialState();
+		newMatrialState=new MatrialState();
 	}
 	
 	@Transactional
@@ -85,16 +88,25 @@ public class MatrialStateService {
 	@Transactional
 	public void addNew() {
 		logger.info("Qadez : Add New  ");
-		matrialStates = matrialStateDAO.add(currentMatrialState);
+		matrialStates = matrialStateDAO.add(newMatrialState);
 	}
 
 	public void initCurrent() {
-		currentMatrialState = new MatrialState();
+		newMatrialState = new MatrialState();
 	}
 	@Transactional
 	public void updateCurrentMatrialState(MatrialState MatrialState) {
 		logger.info("Qadez :  UPdate Current MatrialState " + MatrialState.getName());
 		this.currentMatrialState = MatrialState;
 	}
+
+	public MatrialState getNewMatrialState() {
+		return newMatrialState;
+	}
+
+	public void setNewMatrialState(MatrialState newMatrialState) {
+		this.newMatrialState = newMatrialState;
+	}
+	
 	
 }

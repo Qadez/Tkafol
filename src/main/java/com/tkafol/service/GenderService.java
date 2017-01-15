@@ -24,6 +24,7 @@ public class GenderService {
 	private GenderDAO genderDAO;
 	private List<Gender> genders;
 	private Gender currentGender;
+	private Gender newGender;
 	
 	private static final Logger logger = LoggerFactory.getLogger(GenderService.class);
 	
@@ -31,6 +32,7 @@ public class GenderService {
 	public void init() {
 
 		currentGender = new Gender();
+		newGender=new Gender();
 	}
 	
 	public GenderDAO getGenderDAO() {
@@ -75,7 +77,8 @@ public class GenderService {
 		this.currentGender = currentGender;
 	}
 	/////////////////////////////////////////////
-
+	
+	@Transactional
 	public void updateCurrentGender1(Gender currentGender) {
 		logger.info("Qadez : Update The Current Id:" + currentGender.getId());
 		setCurrentGender(currentGender);
@@ -90,11 +93,11 @@ public class GenderService {
 	@Transactional
 	public void addNew() {
 		logger.info("Qadez : Add New  ");
-		genders = genderDAO.add(currentGender);
+		genders = genderDAO.add(newGender);
 	}
 
 	public void initCurrent() {
-		currentGender = new Gender();
+		newGender = new Gender();
 	}
 
 	public void updateCurrentGender(Gender gender) {
@@ -102,4 +105,12 @@ public class GenderService {
 		this.currentGender = gender;
 	}
 
+	public Gender getNewGender() {
+		return newGender;
+	}
+
+	public void setNewGender(Gender newGender) {
+		this.newGender = newGender;
+	}
+   
 }

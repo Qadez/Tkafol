@@ -24,6 +24,9 @@ public class GovernmentService {
 	private GovernmentDAO governmentDAO;
 	private List<Government> governments;
 	private Government currentGovernment;
+	private Government newGovernment;
+
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(GenderService.class);
 
@@ -31,6 +34,7 @@ public class GovernmentService {
 	public void init() {
 
 		currentGovernment = new Government();
+		newGovernment=new Government();
 	}
 	
 	@Transactional
@@ -81,16 +85,25 @@ public class GovernmentService {
 	@Transactional
 	public void addNew() {
 		logger.info("Qadez : Add New  ");
-		governments = governmentDAO.add(currentGovernment);
+		governments = governmentDAO.add(newGovernment);
 	}
 
 	public void initCurrent() {
-		currentGovernment= new Government();
+		newGovernment= new Government();
 	}
 
 	public void updateCurrentGovernment(Government Government) {
 		logger.info("Qadez :  UPdate Current Disesase " + Government.getName());
 		this.currentGovernment = Government;
 	}
+
+	public Government getNewGovernment() {
+		return newGovernment;
+	}
+
+	public void setNewGovernment(Government newGovernment) {
+		this.newGovernment = newGovernment;
+	}
+	
 
 }

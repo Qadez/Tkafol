@@ -54,7 +54,7 @@
 							<div class="form-group">
 								<label>UserRole Name</label>
 								<h:inputText class="form-control" id="addNameInput"
-									value="#{userRoleService.currentUserRole.name}" />
+									value="#{userRoleService.newUserRole.name}" />
 								<p class="help-block">Enter The Value Of The UserRole And
 									Click Save .</p>
 							</div>
@@ -82,40 +82,40 @@
 										action="#{userRoleService.initCurrent()}"
 										styleClass="btn btn-success" update="@form" oncomplete="$('#addModal').modal('show')" />
 								
-							<p:dataTable width="100%" value="#{userRoleService.userRoles}"
+							<h:dataTable width="100%" value="#{userRoleService.userRoles}"
 								var="user"
 								styleClass="table table-striped table-bordered table-hover"
 								rowClasses="odd gradeA,even gradeA" id="distable">
-								<p:column>
+								<h:column>
 									<f:facet name="header">
 									ID
 									</f:facet>
 									#{user.id}
-								</p:column>
-								<p:column>
+								</h:column>
+								<h:column>
 									<f:facet name="header">
 									Name
 									</f:facet>
 									#{user.name}
-								</p:column>
-								<p:column>
+								</h:column>
+								<h:column>
 									<f:facet name="header">
 									Store Date
 									</f:facet>
 									#{user.storeDate}
-								</p:column>
-								<p:column>
+								</h:column>
+								<h:column>
 									<f:facet name="header">
 									Delete
 									</f:facet>
 									<!-- <h:form role="form"> -->
-									<p:commandLink class="btn btn-danger"
+									<h:commandLink class="btn btn-danger"
 										action="#{userRoleService.delete(user)}">Delete
-									</p:commandLink>
+									</h:commandLink>
 									<!-- </h:form> -->
 
-								</p:column>
-								<p:column>
+								</h:column>
+								<h:column>
 									<f:facet name="header">
 									Edit
 									</f:facet>
@@ -124,8 +124,8 @@
 										styleClass="btn btn-warning" oncomplete="$('#editModal').modal('show')" update="@form" />
 									<!-- </h:form> -->
 
-								</p:column>
-							</p:dataTable>
+								</h:column>
+							</h:dataTable>
 
 							<!-- /.table-responsive -->
 						</div>

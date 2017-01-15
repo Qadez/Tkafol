@@ -23,12 +23,16 @@ public class UserRoleService {
 	private UserRoleDAO userRoleDAO;
 	private List<UserRole> userRoles;
 	private UserRole currentUserRole;
+	private UserRole newUserRole;
+
+	
 private static final Logger logger = LoggerFactory.getLogger(UserRoleService.class);
 	
 	@PostConstruct
 	public void init() {
 
 		currentUserRole = new UserRole();
+		newUserRole= new UserRole();
 	}
 	@Transactional
 	List<UserRole> getAllUserRoles() {
@@ -81,11 +85,11 @@ private static final Logger logger = LoggerFactory.getLogger(UserRoleService.cla
 	@Transactional
 	public void addNew() {
 		logger.info("Qadez : Add New  ");
-		userRoles = userRoleDAO.add(currentUserRole);
+		userRoles = userRoleDAO.add(newUserRole);
 	}
 	@Transactional
 	public void initCurrent() {
-		currentUserRole = new UserRole();
+		newUserRole = new UserRole();
 	}
 	@Transactional
 	public void updateCurrentUserRole(UserRole userRole) {
@@ -93,6 +97,12 @@ private static final Logger logger = LoggerFactory.getLogger(UserRoleService.cla
 		
 		this.currentUserRole=userRole;
 		
+	}
+	public UserRole getNewUserRole() {
+		return newUserRole;
+	}
+	public void setNewUserRole(UserRole newUserRole) {
+		this.newUserRole = newUserRole;
 	}
 	
 	

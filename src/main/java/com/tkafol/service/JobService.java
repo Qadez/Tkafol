@@ -24,6 +24,7 @@ public class JobService {
 	private JobDAO jobDAO;
 	private List<Job> jobs;
 	private Job currentJob;
+	private Job newJob;
 	
 	private static final Logger logger = LoggerFactory.getLogger(JobService.class);
 	
@@ -31,6 +32,7 @@ public class JobService {
 	public void init() {
 
 		currentJob = new Job();
+		newJob=new Job();
 	}
 	@Transactional
 	List<Job> getAllJobs() {
@@ -72,23 +74,30 @@ public class JobService {
 
 	@Transactional
 	public void updatejob() {
-		logger.info("Qadez : updateDisease ");
+		logger.info("Qadez : updateJob ");
 		jobs = jobDAO.update(currentJob);
 	}
 
 	@Transactional
 	public void addNew() {
 		logger.info("Qadez : Add New  ");
-		jobs = jobDAO.add(currentJob);
+		jobs = jobDAO.add(newJob);
 	}
-
+	@Transactional
 	public void initCurrent() {
-		currentJob = new Job();
+		newJob = new Job();
 	}
-
+	@Transactional
 	public void updateCurrentjob(Job job) {
-		logger.info("Qadez :  UPdate Current Disesase " + job.getName());
+		logger.info("Qadez :  UPdate Current Job " + job.getName());
 		this.currentJob = job;
 	}
+	public Job getNewJob() {
+		return newJob;
+	}
+	public void setNewJob(Job newJob) {
+		this.newJob = newJob;
+	}
+	
 
 }
