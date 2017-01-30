@@ -3,6 +3,7 @@ package com.tkafol.model;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 @Table(name="users")
 @ManagedBean(name="user")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@RequestScoped
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -30,7 +32,7 @@ public class User implements Serializable {
 
 	private String phone;
 
-	@Column(name="STORE_DATE")
+	@Column(name="STORE_DATE",insertable=false)
 	private Timestamp storeDate;
 
 	@Column(name="USER_NAME")

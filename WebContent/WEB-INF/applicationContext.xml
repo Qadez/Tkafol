@@ -55,9 +55,7 @@
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="userDAO" class="com.tkafol.dao.spring.UserDAOImple">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
+	
 	<beans:bean id="diseasDAO" class="com.tkafol.dao.spring.DiseasDAOImple">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
@@ -74,6 +72,9 @@
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	<beans:bean id="userRoleDAO" class="com.tkafol.dao.spring.UserRoleDAOImple">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="userDAO" class="com.tkafol.dao.spring.UserDAOImple">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	
@@ -98,6 +99,9 @@
 	</beans:bean>
 	<beans:bean id="userRoleService" class="com.tkafol.service.UserRoleService">
 		<beans:property name="userRoleDAO" ref="userRoleDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="userService" class="com.tkafol.service.UserService">
+		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
 
 	<context:component-scan base-package="com.journaldev" />

@@ -1,5 +1,7 @@
 package com.tkafol.dao.spring;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,6 +31,37 @@ public class UserDAOImple implements UserDAO {
 		query.setString("pass", password);
 
 		return (User) query.uniqueResult();
+	}
+	////
+	@Override
+	public List<User> findAll() {
+		logger.info("Start Find All Data");
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("SELECT u FROM User u");
+		List<User> result=query.list();
+		logger.info("List Size "+result.size());
+		return result;
+		
+		
+	}
+	@Override
+	public List<User> delete(User user) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.delete(user);
+		return findAll();
+		
+	}
+	@Override
+	public List<User> update(User currentUser) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(currentUser);
+		return findAll();
+	}
+	@Override
+	public List<User> add(User newUser) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(newUser);
+		return findAll();
 	}
 
 }
